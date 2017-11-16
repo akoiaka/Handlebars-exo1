@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Handlebars exercice</title>
+</head>
+
+<body>
+
+<main>
+    <header>
+
+    </header>
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Mon petit listing d'animaux<br>AVEC<br></h2><h1>Handlebars</h1>
+            <br>
+        <h5>Refaire ce code d'une seconde manière avec les packages npm node pack en suivant les 10 dernières minutes de cette vidéo:
+            <br>
+            <a href="https://www.youtube.com/watch?v=wSNa5b1mS5Y">VIDEO</a></h5>
+     </div>
+        <div id="pets-container"></div>
+    </div>
+</main>
+
+<!--tout le code handlebar var etre injecté dans le scrip ci-dessous-->
+<!--donner un id est essentiel pour permettre de cibler cet endroit-->
+<script id="petsTemplate"   type="text/x-handlebars-template">
+    {{#each pets}}
+<div class="pet">
+    <div class="photo-column">
+        <img src="{{photo}}" alt="">
+    </div>
+    <div class="info-column">
+        <h2>{{name}} <span class="species">({{species}}</span></h2>
+
+        <p>Age: {{calculateAge birthYear}}</p>
+        <!--ici on passe la donnée de jSON birthYear en parametre qui sera ensuite réutilisé dans le script js calculate-->
+
+        {{#if favFoods}}
+        <h4 class="headline-bar">Favorite Foods</h4>
+            <ul class="favorite-foods">
+                {{#each favFoods}}
+                 <li>
+                     {{{this}}}
+                 </li>
+                 {{/each}}
+            </ul>
+        {{/if}}
+    </div>
+
+</div>
+
+    {{/each}}
+</script>
+
+<!--il est important de mettre le script handlebar avant notre propre lien de script-->
+<script src="js/handlebars-v4.0.11.js"></script>
+<script src="js/main.js"></script>
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
